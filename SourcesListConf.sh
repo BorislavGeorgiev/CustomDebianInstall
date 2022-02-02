@@ -1,5 +1,10 @@
 #! /bin/sh
 
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root."
+  exit
+fi
+
 sudo apt update; sudo apt install --yes curl wget apt-transport-https dirmngr
 
 sudo cp -fi /etc/apt/sources.list /etc/apt/sources.list.backup
